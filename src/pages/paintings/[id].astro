@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+
+export function getStaticPaths() {
+  return [
+    {params: {id: '1234'}},
+  ];
+}
+
+
+---
+
+<Layout title='Gallery'>
+    <main>
+        <a href="/">Home</a>
+        <picture>
+            <source
+                srcset="/images/photo-1579783902614-a3fb3927b6a5.webp"
+                media="(orientation: portrait)"
+            />
+            <img
+                src="/images/photo-1579783902614-a3fb3927b6a5.webp"
+                alt=""
+                transition:name="painting-1234"
+            />
+        </picture>
+    </main>
+</Layout>
+
+<style>
+    main {
+        max-width: 100vw;
+    }
+
+    main img {
+        width: 100%;
+    }
+</style>
