@@ -24,4 +24,24 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
+	@keyframes goRight {
+		from {
+			position: relative;
+			left: 0;
+		}
+		to {
+			position: relative;
+			left: 100vw;
+		}
+	}
+	@keyframes goLeft {
+		from {
+			position: relative;
+			left: 100vw;
+		}
+		to {
+			position: relative;
+			left: 0;
+		}
+	}
 </style>

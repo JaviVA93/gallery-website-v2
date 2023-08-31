@@ -8,11 +8,30 @@ export function getStaticPaths() {
   ];
 }
 
+const anim = {
+  old: {
+    name: 'goRight',
+    duration: '0.5s',
+    easing: 'linear',
+    fillMode: 'forwards',
+  },
+  new: {
+    name: 'goLeft',
+    duration: '0.5s',
+    easing: 'linear',
+    fillMode: 'backwards',
+  }
+};
+
+const myFade = {
+  forwards: anim,
+  backwards: anim,
+};
 
 ---
 
 <Layout title='Gallery'>
-    <main>
+    <main transition:animate={myFade}>
         <a href="/">Home</a>
         <picture>
             <source
