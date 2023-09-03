@@ -1,53 +1,28 @@
+---
+import { PAINTINGS } from "../constants/paintings"
+import { getRandomElementsFromArray } from "../utils/utils"
+
+const carouselItems = getRandomElementsFromArray(PAINTINGS, 4)
+const lang = 'EN'
+---
+
+
 <div class="carousel">
-    <a href="/paintings/1234">
-        <picture>
-            <source
-                srcset="/images/photo-1579783902614-a3fb3927b6a5.webp"
-                media="(orientation: portrait)"
-            />
-            <img
-                src="/images/photo-1579783902614-a3fb3927b6a5.webp"
-                alt=""
-                transition:name="painting-1234"
-            />
-        </picture>
-    </a>
-    <a href="/paintings/1234">
-        <picture>
-            <source
-                srcset="/images/photo-1584285405429-136bf988919c.webp"
-                media="(orientation: portrait)"
-            />
-            <img
-                src="/images/photo-1584285405429-136bf988919c.webp"
-                alt=""
-            />
-        </picture>
-    </a>
-    <a href="/paintings/1234">
-        <picture>
-            <source
-                srcset="/images/photo-1584727638057-78254f636b5a.webp"
-                media="(orientation: portrait)"
-            />
-            <img
-                src="/images/photo-1584727638057-78254f636b5a.webp"
-                alt=""
-            />
-        </picture>
-    </a>
-    <a href="/paintings/1234">
-        <picture>
-            <source
-                srcset="/images/photo-1578301978693-85fa9c0320b9.webp"
-                media="(orientation: portrait)"
-            />
-            <img
-                src="/images/photo-1578301978693-85fa9c0320b9.webp"
-                alt=""
-            />
-        </picture>
-    </a>
+    {carouselItems.map(item => (
+        <a href={`paintings/${item.ID}`} transition:name={`painting-${item.ID}`}>
+            <picture>
+                <source
+                    srcset={item.IMAGE.PATH}
+                    media="(orientation: portrait)"
+                />
+                <img
+                    src={item.IMAGE.PATH}
+                    alt=""
+                />
+            </picture>
+            <h3>{item.NAME[lang]}</h3>
+        </a>
+    ))}
 </div>
 
 <style>

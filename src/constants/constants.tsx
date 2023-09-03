@@ -8,19 +8,11 @@ export const NAVIGATION = [
         }
     },
     {
-        PATH: '/about',
-        TEXT: {
-            ES: 'Acerca de',
-            CA: 'Sobre',
-            EN: 'About'
-        }
-    },
-    {
         PATH: '/search',
         TEXT: {
-            ES: 'Inicio',
-            CA: 'Inici',
-            EN: 'Home'
+            ES: 'Buscar',
+            CA: 'Cerca',
+            EN: 'Search'
         }
     },
     {
@@ -29,6 +21,14 @@ export const NAVIGATION = [
             ES: 'Cuadros',
             CA: 'Quadres',
             EN: 'Paintings'
+        }
+    },
+    {
+        PATH: '/about',
+        TEXT: {
+            ES: 'Acerca de',
+            CA: 'Sobre',
+            EN: 'About'
         }
     },
 ]
