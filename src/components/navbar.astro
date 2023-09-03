@@ -1,0 +1,36 @@
+---
+import { NAVIGATION } from "../constants/constants";
+
+const lang = "EN";
+---
+
+<nav>
+    <ul>
+        {
+            NAVIGATION.map((item) => (
+                <li>
+                    <a href={item.PATH}>{item.TEXT[lang]}</a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
+
+<style>
+    nav {
+        padding: 15px 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+    }
+    a {
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: black;
+    }
+
+</style>
