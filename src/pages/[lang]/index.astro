@@ -1,0 +1,34 @@
+---
+import Layout from "../../layouts/MainLayout.astro";
+import Carousel from "../../components/carousel.astro";
+import { COPIES } from "../../constants/copies";
+import { LANGUAGES } from "../../constants/constants";
+
+export function getStaticPaths() {
+  const params = LANGUAGES.map((lng) => {
+    return {
+      params: { lang: lng },
+    };
+  });
+
+  return params;
+}
+
+const { lang } = Astro.params;
+---
+
+<Layout title="Gallery">
+  <section>
+    <h1>{COPIES.HOME.TITLE[lang as keyof typeof COPIES.HOME.TITLE]}</h1>
+    <Carousel />
+  </section>
+</Layout>
+
+<style>
+  section {
+    max-width: 100vw;
+  }
+  h1 {
+    margin: 25px 0;
+  }
+</style>

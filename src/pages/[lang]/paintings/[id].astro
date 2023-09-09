@@ -1,13 +1,16 @@
 ---
-import Layout from "../../layouts/MainLayout.astro";
-import { PAINTINGS } from "../../constants/paintings";
-
+import Layout from "../../../layouts/MainLayout.astro";
+import { PAINTINGS } from "../../../constants/paintings";
+import { LANGUAGES } from "../../../constants/constants";
+import { combineArrays } from "../../../utils/utils";
 
 
 export function getStaticPaths() {
-  const params = PAINTINGS.map((painting) => {
+  const langAndPaintings = combineArrays(LANGUAGES, PAINTINGS)
+  const params = langAndPaintings.map(([lang, painting]) => {
     return {
       params: {
+        lang,
         id: painting.ID,
       },
     };
@@ -17,33 +20,15 @@ export function getStaticPaths() {
   return params
 }
 
-const lang = 'EN'
+
 const { id } = Astro.params
+const lang = Astro.params.lang
 const paintingData = PAINTINGS.find(p => p.ID === id)
 
-const anim = {
-  old: {
-    name: "goRight",
-    duration: "0.5s",
-    easing: "linear",
-    fillMode: "forwards",
-  },
-  new: {
-    name: "goLeft",
-    duration: "0.5s",
-    easing: "linear",
-    fillMode: "backwards",
-  },
-};
-
-const myFade = {
-  forwards: anim,
-  backwards: anim,
-};
 ---
 
 <Layout title="Gallery">
-  <main transition:animate={myFade}>
+  <main>
     <picture>
       <source
         srcset={paintingData?.IMAGE.PATH}
@@ -58,8 +43,8 @@ const myFade = {
     <div>
 
     </div>
-    <h2>{paintingData?.NAME[lang]}</h2>
-    <p>{paintingData?.DESCRIPTION[lang]}</p>
+    <h2>{paintingData?.NAME[lang as keyof typeof paintingData.NAME]}</h2>
+    <p>{paintingData?.DESCRIPTION[lang as keyof typeof paintingData.DESCRIPTION]}</p>
   </main>
 </Layout>
 

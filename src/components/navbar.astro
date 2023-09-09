@@ -1,7 +1,7 @@
 ---
-import { NAVIGATION } from "../constants/constants";
+import { LANGUAGES, NAVIGATION } from "../constants/constants";
 
-const lang = "EN";
+const { lang = LANGUAGES[0] } = Astro.params;
 ---
 
 <nav>
@@ -9,7 +9,9 @@ const lang = "EN";
         {
             NAVIGATION.map((item) => (
                 <li>
-                    <a href={item.PATH}>{item.TEXT[lang]}</a>
+                    <a href={`/${lang}${item.PATH}`}>
+                        {item.TEXT[lang as keyof typeof item.TEXT]}
+                    </a>
                 </li>
             ))
         }
@@ -32,5 +34,4 @@ const lang = "EN";
         text-decoration: none;
         color: black;
     }
-
 </style>

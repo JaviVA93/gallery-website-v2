@@ -1,44 +1,45 @@
 ---
-import { PAINTINGS } from "../constants/paintings"
-import { getRandomElementsFromArray } from "../utils/utils"
+import { PAINTINGS } from "../constants/paintings";
+import { getRandomElementsFromArray } from "../utils/utils";
 
-const carouselItems = getRandomElementsFromArray(PAINTINGS, 4)
-const lang = 'EN'
+const carouselItems = getRandomElementsFromArray(PAINTINGS, 4);
+const { lang } = Astro.params;
 ---
 
-
 <div class="carousel">
-    {carouselItems.map(item => (
-        <a href={`paintings/${item.ID}`} transition:name={`painting-${item.ID}`}>
-            <picture>
-                <source
-                    srcset={item.IMAGE.PATH}
-                    media="(orientation: portrait)"
-                />
-                <img
-                    src={item.IMAGE.PATH}
-                    alt=""
-                />
-            </picture>
-            <h3>{item.NAME[lang]}</h3>
-        </a>
-    ))}
+    {
+        carouselItems.map((item) => (
+            <a
+                href={`/${lang}/paintings/${item.ID}`}
+                transition:name={`painting-${item.ID}`}
+            >
+                <picture>
+                    <source
+                        srcset={item.IMAGE.PATH}
+                        media="(orientation: portrait)"
+                    />
+                    <img src={item.IMAGE.PATH} alt="" />
+                </picture>
+                <h3>{item.NAME[lang as keyof typeof item.NAME]}</h3>
+            </a>
+        ))
+    }
 </div>
 
 <style>
     .carousel {
-		max-width: 100%;
-		display: flex;
-		align-items: flex-end;
-		gap: 15px;
-	}
+        max-width: 100%;
+        display: flex;
+        align-items: flex-end;
+        gap: 15px;
+    }
 
-	.carousel a {
-		width: 250px;
-	}
+    .carousel a {
+        width: 250px;
+    }
 
-	.carousel a img {
-		width: 100%;
-		height: auto;
-	}
+    .carousel a img {
+        width: 100%;
+        height: auto;
+    }
 </style>
