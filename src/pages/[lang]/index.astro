@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/MainLayout.astro";
 import Carousel from "../../components/carousel.astro";
-import { COPIES } from "../../constants/copies";
+import { HOME_COPIES } from "../../constants/copies";
 import { LANGUAGES } from "../../constants/constants";
 
 export function getStaticPaths() {
@@ -19,7 +19,7 @@ const { lang } = Astro.params;
 
 <Layout title="Gallery">
   <section>
-    <h1>{COPIES.HOME.TITLE[lang as keyof typeof COPIES.HOME.TITLE]}</h1>
+    <h1>{HOME_COPIES.TITLE[lang as keyof typeof HOME_COPIES.TITLE]}</h1>
     <Carousel />
   </section>
 </Layout>

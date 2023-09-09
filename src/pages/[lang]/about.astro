@@ -1,6 +1,20 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
+import { LANGUAGES } from "../../constants/constants";
+import { ABOUT_COPIES } from "../../constants/copies"
+
+export function getStaticPaths() {
+  const params = LANGUAGES.map((lng) => {
+    return {
+      params: { lang: lng },
+    };
+  });
+
+  return params;
+}
+
+const { lang = LANGUAGES[0] } = Astro.params;
 ---
 <MainLayout title="Gallery: About">
-    <h1>About</h1>
+    <h1>{ABOUT_COPIES.TITLE[lang as keyof typeof ABOUT_COPIES.TITLE]}</h1>
 </MainLayout>
