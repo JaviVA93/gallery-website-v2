@@ -2,33 +2,36 @@ export const NAVIGATION = [
     {
         PATH: '/',
         TEXT: {
-            ES: 'Inicio',
-            CA: 'Inici',
-            EN: 'Home'
+            es: 'Inicio',
+            ca: 'Inici',
+            en: 'Home'
         }
     },
     {
         PATH: '/search',
         TEXT: {
-            ES: 'Buscar',
-            CA: 'Cerca',
-            EN: 'Search'
+            es: 'Buscar',
+            ca: 'Cerca',
+            en: 'Search'
         }
     },
     {
         PATH: '/paintings',
         TEXT: {
-            ES: 'Cuadros',
-            CA: 'Quadres',
-            EN: 'Paintings'
+            es: 'Cuadros',
+            ca: 'Quadres',
+            en: 'Paintings'
         }
     },
     {
         PATH: '/about',
         TEXT: {
-            ES: 'Acerca de',
-            CA: 'Sobre',
-            EN: 'About'
+            es: 'Acerca de',
+            ca: 'Sobre',
+            en: 'About'
         }
     },
 ]
+
+
+export const LANGUAGES = ['es', 'ca', 'en']
